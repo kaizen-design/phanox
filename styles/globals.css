@@ -141,7 +141,7 @@ span.text-red {
   font-size: 20px;
 }
 .hero-banner-container button {
-  border-radius: 15px;
+  border-radius: 15px;  
   padding: 10px 16px;
   background-color: #f02d34;
   color: white;
@@ -155,12 +155,13 @@ span.text-red {
 
 .hero-banner-container h3 {
   font-size: 4rem;
-  margin-top: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .hero-banner-container h1 {
   color: white;
   font-size: 10em;
-  margin-left: -20px;
+  margin-left: -9px;
   text-transform: uppercase;
 }
 .hero-banner-image {
