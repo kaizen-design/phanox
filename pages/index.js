@@ -1,8 +1,11 @@
 import { FooterBanner, HeroBanner, Product } from '../components';
 import { client } from '../lib/client';
 
-const Home = ({ products, headerBanner, footerBanner }) => {
-  console.log(products);
+const Home = ({ 
+  products, 
+  headerBanner, 
+  footerBanner 
+}) => {  
   return (
     <>      
       <HeroBanner data={headerBanner.length && headerBanner[0]} />
