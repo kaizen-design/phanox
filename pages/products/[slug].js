@@ -1,11 +1,14 @@
 import { client, urlFor } from "../../lib/client";
 import { useState } from "react";
+import { useStateContext } from "../../context/StateContext";
 import { Product } from "../../components";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ product, products }) => {  
   const { title, image, details, price } = product;
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);  
+  
+  const { increaseQty, decreaseQty, qty, addToCart } = useStateContext();
   return (
     <div>
       <div className="product-detail-container">
@@ -20,6 +23,7 @@ const ProductDetails = ({ product, products }) => {
           <div className="small-images-container">
             {image?.map((item, i) => (
               <img 
+                key={i}
                 src={urlFor(item)}
                 alt={title}
                 className={i === index ? 'small-image selected-image' : 'small-image'}
@@ -46,18 +50,30 @@ const ProductDetails = ({ product, products }) => {
           <div className="quantity">
             <h3>Quantity:</h3>
             <div className="quantity-desc">
-              <span className="minus" onClick="">
+              <span className="minus" onClick={decreaseQty}>
                 <AiOutlineMinus />
               </span>
-              <span className="num">0</span>
-              <span className="plus" onClick="">
+              <span className="num">{qty}</span>
+              <span className="plus" onClick={increaseQty}>
                 <AiOutlinePlus />
               </span>
             </div>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick="">Add to Cart</button>
-            <button type="button" className="buy-now" onClick="">Byu Now</button>
+            <button 
+              type="button" 
+              className="add-to-cart" 
+              onClick={() => addToCart(product, qty)}
+            >
+              Add to Cart
+            </button>
+            <button 
+              type="button" 
+              className="buy-now" 
+              onClick={() => {}}
+            >
+              Byu Now
+            </button>
           </div>
         </div>
       </div>

@@ -446,7 +446,6 @@ span.text-red {
   margin-top: 10px;
   display: flex;
   gap: 5px;
-  align-items: center;
 }
 
 .product-detail-desc h4 {
@@ -458,6 +457,7 @@ span.text-red {
 .reviews p {
   color: #324d67;
   margin-top: 0px;
+  font-size: 13px;
 }
 .product-detail-desc .price {
   font-weight: 700;
