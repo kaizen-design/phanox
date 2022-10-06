@@ -348,6 +348,7 @@ span.text-red {
 .item-desc .flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 350px;
   color: #324d67;
 }

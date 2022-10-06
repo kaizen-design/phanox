@@ -4,7 +4,7 @@ import { useStateContext } from "../context/StateContext";
 import { AiOutlineShopping } from 'react-icons/ai';
 
 const Navbar = () => {
-  const { showCart, setShowCart, cartItems, totalPrice, totalQuantities, qty } = useStateContext();
+  const { showCart, setShowCart, cartItems, totalPrice, totalQuantity, qty } = useStateContext();
   return (
     <div className="navbar-container">
       <p className="logo">
@@ -14,7 +14,7 @@ const Navbar = () => {
       </p>  
       <button type="button" className="cart-icon" onClick={() => setShowCart((prev) => !prev)}>
         <AiOutlineShopping />
-        <span className="cart-item-qty">{totalQuantities}</span>
+        <span className="cart-item-qty">{totalQuantity}</span>
       </button>
       {!!showCart && <Cart />}      
     </div>
