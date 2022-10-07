@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
 import { Product } from "../../components";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { handleCheckout } from "../../lib/stripe";
 
-const ProductDetails = ({ product, products }) => {  
-  const { title, image, details, price } = product;
-  const [index, setIndex] = useState(0);  
-  
-  const { increaseQty, decreaseQty, qty, addToCart } = useStateContext();
+const ProductDetails = ({ product, products }) => {    
+  const { title, image, details, price} = product;
+  const [index, setIndex] = useState(0); 
+  const { increaseQty, decreaseQty, qty, addToCart } = useStateContext();  
   return (
     <div>
       <div className="product-detail-container">
@@ -70,7 +70,10 @@ const ProductDetails = ({ product, products }) => {
             <button 
               type="button" 
               className="buy-now" 
-              onClick={() => {}}
+              onClick={() => handleCheckout([{
+                ...product, 
+                quantity: qty
+              }])}
             >
               Byu Now
             </button>
