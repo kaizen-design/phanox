@@ -1,14 +1,21 @@
 import { client, urlFor } from "../../lib/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStateContext } from "../../context/StateContext";
 import { Product } from "../../components";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { handleCheckout } from "../../lib/stripe";
+import { useRouter } from 'next/router';
 
 const ProductDetails = ({ product, products }) => {    
   const { title, image, details, price} = product;
   const [index, setIndex] = useState(0); 
-  const { increaseQty, decreaseQty, qty, addToCart } = useStateContext();  
+  const { increaseQty, decreaseQty, qty, setQty, addToCart } = useStateContext();  
+  const router = useRouter();
+
+  useEffect(() => {
+    setQty(1);
+  }, [router.query.slug]);
+
   return (
     <div>
       <div className="product-detail-container">
